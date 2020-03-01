@@ -1,0 +1,51 @@
+classDiagram
+ TipoFase
+  Proyecto "1..* {ordered}" o-- Ciclo
+  Ciclo "4.. {ordered}" o-- Fase
+  Fase "1..* {ordered} " o-- Iteracion
+  Iteracion "1..*" o-- Actividad
+  Ciclo <|-- Ejecutable
+  Iteracion "1..*" <|-- Artefacto
+  Actividad "0..* " o-- "0..*" Recurso
+  Artefacto <|-- Documento
+  Artefacto <|-- Software
+  Recurso <|-- Humano
+  Recurso <|-- Material
+  class Proyecto{
+	-String nombre
+	-float avance
+ 	 }
+	class Iteracion{
+	-date comienzo
+ 	}
+	class Actividad{
+	-float avance
+	-int duracion
+	}
+	class Ejecutable{
+    -float bytes
+	}
+	class Fase{
+	-TipoFase tipo
+	}
+	class TipoFase{
+	inicio
+	elaboración
+	construcción
+	transición
+	}
+	class Documento{
+	-String nombre
+	-ubicacion
+	}
+	class Software{
+	-bytes
+	}
+	class Humano{
+	-String nombre
+	}
+	class Material{
+	-String inventario
+	}
+	
+	
